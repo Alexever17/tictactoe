@@ -1,0 +1,64 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #872D62;
+}
+
+h1 {
+  color: white;
+  font-family: "Space Mono", cursive;
+  background: #572A72;
+  border: 3px ridge white;
+  padding: 0 10px;
+}
+
+button {
+  font-family: "Space Mono", cursive;
+}
+
+.field {
+  width: 25vw;
+  height: 25vw;
+  max-width: 160px;
+  max-height: 160px;
+  margin: 0 5px;
+  background: #CB87AF;
+  border: 3px ridge white;
+  font-size: 6em;
+  line-height: 0;
+  outline: transparent;
+}
+.field:hover {
+  background: #bc6397;
+}
+
+.row {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#new {
+  margin: 20px 0 0 0;
+  font-size: 1.5em;
+  background: #572A72;
+  color: white;
+  border: 3px ridge white;
+  width: 25vw;
+  max-width: 160px;
+  max-height: 160px;
+  outline: transparent;
+}
+
+footer {
+  margin: 30px;
+  color: white;
+  text-align: center;
+}
+footer a {
+  color: white;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TicTacToe-Alexever17</title>
+        <meta name="description" content="Would you like to play a guick game of Tic Tac Toe?">
+        <meta name="keywords" content="game, Oleksandr, Malakhov, alexever17, tic, tac, toe, coding">
+        <meta name="author" content="Oleksandr Malakhov">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon.gif" type="image/gif" sizes="16x16">
+        <link href="https://fonts.googleapis.com/css?family=Concert+One|Space+Mono" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="row">
+                 <h1>Tic Tac Toe</h1>
+            </div>
+        </header>
+        <main>
+            <div class="row one" id="row1">
+                <button type="button" name="button" class="field free" id="one" onclick="clickButton(this)"></button>
+                <button type="button" name="button" class="field free" id="two" onclick="clickButton(this)"></button>
+                <button type="button" name="button" class="field free" id="three" onclick="clickButton(this)"></button>
+            </div>
+            <div class="row one" id="row2">
+                <button type="button" name="button" class="field free" id="four" onclick="clickButton(this)">X</button>
+                <button type="button" name="button" class="field free" id="five" onclick="clickButton(this)">O</button>
+                <button type="button" name="button" class="field free" id="six" onclick="clickButton(this)"></button>
+            </div>
+            <div class="row one" id="row3">
+                <button type="button" name="button" class="field free" id="seven" onclick="clickButton(this)"></button>
+                <button type="button" name="button" class="field free" id="eight" onclick="clickButton(this)"></button>
+                <button type="button" name="button" class="field free" id="nine" onclick="clickButton(this)"></button>
+            </div>
+        </main>
+        <aside class="row">
+            <button type="button" name="button" id="new" onclick="newGame()">New Game</button>
+        </aside>
+        <footer>Made by Oleksandr Malakov <br /> Visit my <a href="https://github.com/Alexever17">Github Page</a></footer>
+        <script type="text/javascript" src="master.js">
+
+        </script>
+    </body>
+</html>
