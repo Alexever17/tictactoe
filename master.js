@@ -3,22 +3,23 @@ function clickButton(tile) {
     var test = tileTest(tile);
     if (test) {
         write(tile, "X");
-    }
-    var check9 = checkNine();
-    if (check9) {
-        gameFinish();
-        return;
-    }
-    var checkX = checkSystem(tile, "X");
-    if (checkX.includes(3)) {
-        gameFinish();
-        return;
-    }
-    oResponseRandom();
-    var checkO = checkSystem(tileO, "O");
-    if (checkO.includes(3)) {
-        gameFinish();
-        return;
+        var check9 = checkNine();
+        if (check9) {
+            gameFinish();
+            return;
+        }
+        var checkX = checkSystem(tile, "X");
+        if (checkX.includes(3)) {
+            gameFinish();
+            return;
+        }
+        var tileO = oResponseRandom();
+        var checkO = checkSystem(tileO, "O");
+        console.log(checkO);
+        if (checkO.includes(3)) {
+            gameFinish();
+            return;
+        }
     }
 }
 
@@ -32,7 +33,8 @@ function oResponseRandom() {
             write(tileO, "O");
             break;
         }
-    }    
+    }
+    return tileO;
 }
 
 function tileTest(tile) {
