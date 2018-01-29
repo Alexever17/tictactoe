@@ -137,8 +137,9 @@ function twoXlocator(tile, checkX) {
                     }
                 }
                 if (document.getElementById('three').innerHTML == "X" || document.getElementById('seven').innerHTML == "X") {
+                    console.log("s");
                     for (var x = 3; x < 8; x += 2) {
-                        number6 = r;
+                        number6 = x;
                         test = tileTest(document.getElementsByClassName("i" + number6)[0]);
                         if (test) {
                             tileO = document.getElementsByClassName("i" + number6)[0];
