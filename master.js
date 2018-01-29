@@ -15,6 +15,11 @@ function clickButton(tile) {
         return;
     }
     oResponseRandom();
+    var checkO = checkSystem(tileO, "O");
+    if (checkO.includes(3)) {
+        gameFinish();
+        return;
+    }
 }
 
 function oResponseRandom() {
@@ -27,12 +32,7 @@ function oResponseRandom() {
             write(tileO, "O");
             break;
         }
-    }
-    var checkO = checkSystem(tileO, "O");
-    if (checkO.includes(3)) {
-        gameFinish();
-        return;
-    }
+    }    
 }
 
 function tileTest(tile) {
