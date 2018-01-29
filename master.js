@@ -2,8 +2,36 @@
 function clickButton(tile) {
     var test = tileTest(tile);
     if (test) {
-        writeX(tile);
-        var check = checkSystem(tile, "X");
+        write(tile, "X");
+    }
+    var check9 = checkNine();
+    if (check9) {
+        gameFinish();
+        return;
+    }
+    var checkX = checkSystem(tile, "X");
+    if (checkX.includes(3)) {
+        gameFinish();
+        return;
+    }
+    oResponseRandom();
+}
+
+function oResponseRandom() {
+    var identification = 0;
+    var tileO;
+    while (true) {
+        identification = Math.floor(Math.random() * 9) + 1;
+        tileO = document.getElementsByClassName("i" + identification)[0];
+        if (tileO.innerHTML == "") {
+            write(tileO, "O");
+            break;
+        }
+    }
+    var checkO = checkSystem(tileO, "O");
+    if (checkO.includes(3)) {
+        gameFinish();
+        return;
     }
 }
 
@@ -15,17 +43,30 @@ function tileTest(tile) {
     }
 }
 
-function writeX(tile) {
-    tile.innerHTML = "X";
+function write(tile, letter) {
+    tile.innerHTML = letter;
+}
+
+function checkNine() {
+    var value = 0;
+    for (var i = 0; i < 9; i++) {
+        if (document.getElementsByClassName("field")[i].innerHTML != "") {
+            value += 1;
+        }
+    }
+    if (value == 9) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function checkSystem(tile, letter) {
     var row = rowCheck(tile, letter);
-    console.log(row);
     var column = columnCheck(tile, letter);
-    console.log(column);
     var diagonal = diagonalCheck(tile, letter);
-    console.log(diagonal);
+    var finishedCheck = [row, column, diagonal];
+    return finishedCheck;
 }
 
 function rowCheck(tile, letter) {
@@ -64,7 +105,7 @@ function rowCheck(tile, letter) {
             value += 1;
         }
         break;
-}
+    }
     return value;
 }
 
@@ -134,4 +175,17 @@ function diagonalCheck(tile, letter) {
         value += 1;
     }
     return value;
+}
+
+function gameFinish() {
+    for (var i = 0; i < 9; i++) {
+        document.getElementsByClassName("field")[i].disabled = true;
+    }
+}
+
+function newGame() {
+    for (var i = 0; i < 9; i++) {
+        document.getElementsByClassName("field")[i].innerHTML = "";
+        document.getElementsByClassName("field")[i].disabled = false;
+    }
 }
