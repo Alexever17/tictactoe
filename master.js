@@ -13,7 +13,6 @@ function clickButton(tile) {
             return;
         }
         var checkX = checkSystem(tile, "X");
-        console.log(checkX);
         if (checkX.includes(3)) {
             gameFinish();
             return;
@@ -100,11 +99,9 @@ function twoXlocator(tile, checkX) {
             case 4:
             case 6:
             case 8:
-                console.log("2468");
                 break;
             case 1:
             case 9:
-                console.log("19");
                 for (var k = 1; k < 10; k += 4) {
                     number3 = k;
                     test = tileTest(document.getElementsByClassName("i" + number3)[0]);
@@ -117,7 +114,6 @@ function twoXlocator(tile, checkX) {
                 break;
             case 3:
             case 7:
-                console.log("37");
                 for (var r = 3; r < 8; r += 2) {
                     number4 = r;
                     test = tileTest(document.getElementsByClassName("i" + number4)[0]);
@@ -129,7 +125,6 @@ function twoXlocator(tile, checkX) {
                 }
                 break;
             case 5:
-                console.log("5");
                 if (document.getElementById('one').innerHTML == "X" || document.getElementById('nine').innerHTML == "X") {
                     for (var v = 1; v < 10; v += 4) {
                         number5 = v;
@@ -159,7 +154,6 @@ function twoXlocator(tile, checkX) {
         counter += 1;
     }
     if (counter > 2) {
-        console.log("s");
         tileO = oResponseRandom();
     }
     return tileO;
