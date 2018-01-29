@@ -31,6 +31,9 @@ button {
 .field:hover {
   background: #bc6397;
 }
+.field:focus {
+  background: #CB87AF;
+}
 
 .row {
   margin: 10px 0;

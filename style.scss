@@ -39,6 +39,9 @@ button {
     &:hover {
         background: darken($color, 10%)
     }
+    &:focus {
+        background: $color
+    }
 }
 
 .row {
