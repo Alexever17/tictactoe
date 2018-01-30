@@ -6,38 +6,66 @@ function clickButton(tile) {
     var test = tileTest(tile);
     if (test) {
         clickCounter += 1;
-        write(tile, "X");
+        write(tile, "X", "user");
         var check9 = checkNine();
         if (check9) {
             gameFinish();
+            document.body.style.background = "#F55F38";
+            document.getElementsByTagName('h1')[0].innerHTML = "Tie";
             return;
         }
         var checkX = checkSystem(tile, "X");
         if (checkX.includes(3)) {
             gameFinish();
+            document.body.style.background = "#48B948";
+            document.getElementsByTagName('h1')[0].innerHTML = "Win";
             return;
         }
         var tileO = oResponse(tile, checkX);
         var checkO = checkSystem(tileO, "O");
         if (checkO.includes(3)) {
             gameFinish();
+            document.body.style.background = "#E75B5B";
+            document.getElementsByTagName('h1')[0].innerHTML = "Loss";
             return;
         }
     }
+}
+
+function write(tile, letter, styleAdd) {
+    tile.innerHTML = letter;
+    tile.classList.add(styleAdd);
+    document.getElementsByTagName('main')[0].click();
 }
 
 function oResponse(tile, checkX) {
     var tileO;
     switch (clickCounter) {
         case 1:
-            tileO = oResponseRandom();
+            tileO = responseMiddle();
+            if (tileO == "ERROR") {
+                tileO = oResponseRandom();
+            }
             break;
         case 2:
-        case 3:
         case 4:
             tileO = twoXlocator(tile, checkX);
+            if (tileO == "ERROR") {
+                tileO = oResponseRandom();
+            }
+            break;
+        case 3:
+            var checkO = checkSystem(storage, "O");
+            tileO = twoXlocator(storage, checkO);
+            if (tileO == "ERROR") {
+                tileO = twoXlocator(tile, checkX);
+                if (tileO == "ERROR") {
+                    tileO = oResponseRandom();
+                }
+            }
             break;
     }
+    storage = tileO;
     return tileO;
 }
 
@@ -52,7 +80,7 @@ function twoXlocator(tile, checkX) {
             test = tileTest(document.getElementsByClassName("i" + number1)[0]);
             if (test) {
                 tileO = document.getElementsByClassName("i" + number1)[0];
-                write(tileO, "O");
+                write(tileO, "O", "pc");
                 return tileO;
             }
         }
@@ -84,7 +112,7 @@ function twoXlocator(tile, checkX) {
             test = tileTest(document.getElementsByClassName("i" + number2)[0]);
             if (test) {
                 tileO = document.getElementsByClassName("i" + number2)[0];
-                write(tileO, "O");
+                write(tileO, "O", "pc");
                 return tileO;
             }
         }
@@ -107,7 +135,7 @@ function twoXlocator(tile, checkX) {
                     test = tileTest(document.getElementsByClassName("i" + number3)[0]);
                     if (test) {
                         tileO = document.getElementsByClassName("i" + number3)[0];
-                        write(tileO, "O");
+                        write(tileO, "O", "pc");
                         return tileO;
                     }
                 }
@@ -119,7 +147,7 @@ function twoXlocator(tile, checkX) {
                     test = tileTest(document.getElementsByClassName("i" + number4)[0]);
                     if (test) {
                         tileO = document.getElementsByClassName("i" + number4)[0];
-                        write(tileO, "O");
+                        write(tileO, "O", "pc");
                         return tileO;
                     }
                 }
@@ -131,19 +159,18 @@ function twoXlocator(tile, checkX) {
                         test = tileTest(document.getElementsByClassName("i" + number5)[0]);
                         if (test) {
                             tileO = document.getElementsByClassName("i" + number5)[0];
-                            write(tileO, "O");
+                            write(tileO, "O", "pc");
                             return tileO;
                         }
                     }
                 }
                 if (document.getElementById('three').innerHTML == "X" || document.getElementById('seven').innerHTML == "X") {
-                    console.log("s");
                     for (var x = 3; x < 8; x += 2) {
                         number6 = x;
                         test = tileTest(document.getElementsByClassName("i" + number6)[0]);
                         if (test) {
                             tileO = document.getElementsByClassName("i" + number6)[0];
-                            write(tileO, "O");
+                            write(tileO, "O", "pc");
                             return tileO;
                         }
                     }
@@ -155,7 +182,19 @@ function twoXlocator(tile, checkX) {
         counter += 1;
     }
     if (counter > 2) {
-        tileO = oResponseRandom();
+        tileO = "ERROR";
+    }
+    return tileO;
+}
+
+function responseMiddle() {
+    var tile = document.getElementsByClassName('i5')[0];
+    var test = tileTest(tile);
+    if (test) {
+        tileO = tile;
+        write(tileO, "O", "pc");
+    } else {
+        tileO = "ERROR";
     }
     return tileO;
 }
@@ -167,7 +206,7 @@ function oResponseRandom() {
         identification = Math.floor(Math.random() * 9) + 1;
         tileO = document.getElementsByClassName("i" + identification)[0];
         if (tileO.innerHTML == "") {
-            write(tileO, "O");
+            write(tileO, "O", "pc");
             break;
         }
     }
@@ -180,10 +219,6 @@ function tileTest(tile) {
     } else {
         return true;
     }
-}
-
-function write(tile, letter) {
-    tile.innerHTML = letter;
 }
 
 function checkNine() {
@@ -338,8 +373,18 @@ function gameFinish() {
 
 function newGame() {
     clickCounter = 0;
+    storage = "";
     for (var i = 0; i < 9; i++) {
-        document.getElementsByClassName("field")[i].innerHTML = "";
-        document.getElementsByClassName("field")[i].disabled = false;
+        tile = document.getElementsByClassName("field")[i];
+        tile.innerHTML = "";
+        tile.disabled = false;
+        if (tile.classList.contains("pc")) {
+            tile.classList.remove("pc");
+        }
+        if (tile.classList.contains("user")) {
+            tile.classList.remove("user");
+        }
+        document.body.style.background = "#872D62";
+        document.getElementsByTagName('h1')[0].innerHTML = "Tic Tac Toe";
     }
 }

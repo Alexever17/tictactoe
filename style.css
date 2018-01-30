@@ -1,6 +1,15 @@
-html, body {
+html {
   margin: 0;
   padding: 0;
+  background: #872D62;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 5px;
   background: #872D62;
 }
 
@@ -31,8 +40,17 @@ button {
 .field:hover {
   background: #bc6397;
 }
-.field:focus {
-  background: #CB87AF;
+.field:disabled {
+  color: #333333;
+  pointer-events: none;
+}
+
+.user {
+  background: #a66cc9;
+}
+
+.pc {
+  background: #d17577;
 }
 
 .row {

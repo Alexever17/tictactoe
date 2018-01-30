@@ -7,9 +7,18 @@ $color: #CB87AF;
     font-family: "Space Mono", cursive;
 }
 
-html, body {
+html {
     margin: 0;
     padding: 0;
+    background: $background;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
     background: $background;
 }
 
@@ -39,9 +48,17 @@ button {
     &:hover {
         background: darken($color, 10%)
     }
-    &:focus {
-        background: $color
+    &:disabled {
+        color: #333333;
+        pointer-events:none;
     }
+}
+.user {
+    background: lighten($violet, 30%);
+}
+
+.pc {
+    background: lighten($red, 20%);
 }
 
 .row {
