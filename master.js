@@ -11,6 +11,7 @@ function clickButton(tile) {
         if (check9) {
             gameFinish();
             document.body.style.background = "#F55F38";
+            document.documentElement.style.background = "#F55F38";
             document.getElementsByTagName('h1')[0].innerHTML = "Tie";
             return;
         }
@@ -18,6 +19,7 @@ function clickButton(tile) {
         if (checkX.includes(3)) {
             gameFinish();
             document.body.style.background = "#48B948";
+            document.documentElement.style.background = "#48B948";
             document.getElementsByTagName('h1')[0].innerHTML = "Win";
             return;
         }
@@ -26,6 +28,7 @@ function clickButton(tile) {
         if (checkO.includes(3)) {
             gameFinish();
             document.body.style.background = "#E75B5B";
+            document.documentElement.style.background = "#E75B5B";
             document.getElementsByTagName('h1')[0].innerHTML = "Loss";
             return;
         }
@@ -385,6 +388,7 @@ function newGame() {
             tile.classList.remove("user");
         }
         document.body.style.background = "#872D62";
+        document.documentElement.style.background = "#872D62";
         document.getElementsByTagName('h1')[0].innerHTML = "Tic Tac Toe";
     }
 }
