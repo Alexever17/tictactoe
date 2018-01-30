@@ -48,13 +48,13 @@ function oResponse(tile, checkX) {
             }
             break;
         case 2:
-        case 4:
             tileO = twoXlocator(tile, checkX);
             if (tileO == "ERROR") {
                 tileO = oResponseRandom();
             }
             break;
         case 3:
+        case 4:
             var checkO = checkSystem(storage, "O");
             tileO = twoXlocator(storage, checkO);
             if (tileO == "ERROR") {
