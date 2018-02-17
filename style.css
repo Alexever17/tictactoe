@@ -37,9 +37,11 @@ button {
   line-height: 0;
   outline: transparent;
 }
+
 .field:hover {
   background: #bc6397;
 }
+
 .field:disabled {
   color: #333333;
   pointer-events: none;
@@ -55,12 +57,8 @@ button {
 
 .row {
   margin: 10px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 #new {
@@ -80,6 +78,8 @@ footer {
   color: white;
   text-align: center;
 }
+
 footer a {
   color: white;
 }
+/*# sourceMappingURL=style.css.map */
